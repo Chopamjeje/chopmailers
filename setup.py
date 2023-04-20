@@ -29,7 +29,7 @@ def install_python_and_upgrade_pip():
 
 
 def move_files(dst_dir):
-    files = ['mailer.py', 'constructed.py', 'bigVar.py', 'CreateUser.py', 'functions.py', 'DeleteUser.py', 'LicenseReset.py']
+    files = ['mailer.py', 'mailer2.py', 'mailer3.py', 'constructed.py', 'bigVar.py', 'CreateUser.py', 'functions.py', 'DeleteUser.py', 'LicenseReset.py']
     # Move each file to the destination directory
     for file in files:
         dst_file = os.path.join(dst_dir, file)
@@ -72,6 +72,8 @@ file_list = [
     '/usr/bin/spamdel',
     '/usr/bin/spamlic',
     '/usr/bin/spamuser',
+    '/usr/bin/order',
+    '/usr/bin/chop',
     # '/usr/include/pxmailer/mailer.py',
     # '/usr/include/pxmailer/constructed.py',
     # '/usr/include/pxmailer/functions.py',
@@ -123,12 +125,16 @@ file_permissions = [
     '/usr/include/spammailer/CreateUser.py',
     '/usr/include/spammailer/constructed.py',
     '/usr/include/spammailer/mailer.py',
+    '/usr/include/spammailer/mailer2.py',
+    '/usr/include/spammailer/mailer3.py',
     '/usr/include/spammailer/DeleteUser.py',
     '/usr/include/spammailer/LicenseReset.py',
     '/usr/bin/spamuser',
     '/usr/bin/spamdel',
     '/usr/bin/spamlic',
     '/usr/bin/spam',
+    '/usr/bin/order',
+    '/usr/bin/chop',
 ]
 
 for file in file_permissions:
@@ -149,6 +155,8 @@ subprocess.call(["yum", "install", "dos2unix"])
 # Perform dos2unix on specified files
 dos2unix_list = [
     '/usr/include/spammailer/mailer.py',
+    '/usr/include/spammailer/mailer2.py',
+    '/usr/include/spammailer/mailer3.py',
     '/usr/include/spammailer/constructed.py',
     '/usr/include/spammailer/bigVar.py',
     '/usr/include/spammailer/CreateUser.py',
@@ -159,6 +167,8 @@ dos2unix_list = [
     '/usr/bin/spamlic',
     '/usr/bin/spamdel',
     '/usr/bin/spamuser',
+    '/usr/bin/order',
+    '/usr/bin/chop',
 ]
 
 for file in dos2unix_list:
@@ -194,9 +204,25 @@ with open("/usr/bin/spamdel", "w") as f:
 # Make /usr/bin/pxuser file executable
 os.chmod("/usr/bin/spamdel", 0o777)
 
+# Write content to /usr/bin/pxuser
+with open("/usr/bin/order", "w") as f:
+    f.write("#!/bin/bash\npython3 /usr/include/spammailer/mailer2.py")
+
+# Make /usr/bin/pxuser file executable
+os.chmod("/usr/bin/order", 0o777)
+
+# Write content to /usr/bin/pxuser
+with open("/usr/bin/chop", "w") as f:
+    f.write("#!/bin/bash\npython3 /usr/include/spammailer/mailer3.py")
+
+# Make /usr/bin/pxuser file executable
+os.chmod("/usr/bin/chop", 0o777)
+
 # Convert files to Unix line endings
 
 subprocess.call(["dos2unix", "/usr/include/spammailer/mailer.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/mailer2.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/mailer3.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/constructed.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/bigVar.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/CreateUser.py"])
@@ -207,6 +233,8 @@ subprocess.call(["dos2unix", "/usr/bin/spam"])
 subprocess.call(["dos2unix", "/usr/bin/spamuser"])
 subprocess.call(["dos2unix", "/usr/bin/spamlic"])
 subprocess.call(["dos2unix", "/usr/bin/spamdel"])
+subprocess.call(["dos2unix", "/usr/bin/order"])
+subprocess.call(["dos2unix", "/usr/bin/chop"])
 
 # Install python3
 if sys.version_info[0] < 3:
@@ -229,6 +257,8 @@ subprocess.call(["pip3", "install", "fpdf"])
 # Install dos2unix
 subprocess.call(["yum", "install", "dos2unix"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/mailer.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/mailer2.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/mailer3.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/constructed.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/bigVar.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/CreateUser.py"])
@@ -239,6 +269,8 @@ subprocess.call(["dos2unix", "/usr/bin/spam"])
 subprocess.call(["dos2unix", "/usr/bin/spamuser"])
 subprocess.call(["dos2unix", "/usr/bin/spamlic"])
 subprocess.call(["dos2unix", "/usr/bin/spamdel"])
+subprocess.call(["dos2unix", "/usr/bin/order"])
+subprocess.call(["dos2unix", "/usr/bin/chop"])
 install_python_and_upgrade_pip()
 subprocess.call(["pip3", "install", "bcrypt"])
 #os.remove(finalpath)
