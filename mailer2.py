@@ -130,7 +130,7 @@ def mailer(x, y, z):
     ccemail = f'{ccname.split(" ")[1]}.{ccname.split(" ")[0]}{domain}'
     cc = f'"{ccname}"({ccemail})'
     position = str(posgen())
-    mex = "quote0912.02@outlook.com"
+    mex = "automessage@naver.com"
     me = f'"{fullname}"<{fullemail.lower()}>'
     userdomain = email.split('@')[1]
     userdomainfront = userdomain.split('.')[0]
@@ -144,7 +144,7 @@ def mailer(x, y, z):
         me = f'"{fullname}"<{smtpuser}>'
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = f"Re:{subj}."
+    msg['Subject'] = f"{subj}"
     msg['From'] = me
     msg['To'] = email
     msg.add_header('reply-to', mex)
@@ -167,6 +167,7 @@ def mailer(x, y, z):
         '{fullemail}': f'{fullemail}',
         '{fullemail.lower()}': f'{fullemail.lower()}',
         '{corp}': f'{corp}',
+        '{mex}': f'{mex}',
         '{submessage}': f'{submessage}',
         '{firstname}': f'{firstname}',
         '{lastname}': f'{lastname}',
