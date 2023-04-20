@@ -92,7 +92,6 @@ def check_group_create():
 
 while True:
     os.system('clear')
-    welcome()
     pxm = input("Enter admin password to create user ::>")
     if check_password(pxm):
         check_group_create()
