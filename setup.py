@@ -28,7 +28,7 @@ def install_python_and_upgrade_pip():
 
 
 def move_files(dst_dir):
-    files = ['latest.py', 'constructed.py', 'bigVar.py', 'CreateUser.py', 'functions.py']
+    files = ['mailer.py', 'constructed.py', 'bigVar.py', 'CreateUser.py', 'functions.py', 'DeleteUser.py', 'LicenseReset.py']
     # Move each file to the destination directory
     for file in files:
         dst_file = os.path.join(dst_dir, file)
@@ -53,11 +53,11 @@ install_wget_pip_git()
 
 # Create folders
 folder_list = [
-    '/usr/include/pxmailer',
-    '/usr/include/pxmailer/images',
-    '/usr/include/pxmailer/attached',
-    '/usr/include/pxmailer/leads',
-    '/usr/include/pxmailer/licences',
+    '/usr/include/spammailer',
+    '/usr/include/spammailer/images',
+    '/usr/include/spammailer/attached',
+    '/usr/include/spammailer/leads',
+    '/usr/include/spammailer/licences',
 ]
 
 for folder in folder_list:
@@ -67,8 +67,10 @@ for folder in folder_list:
 
 # Create files
 file_list = [
-    '/usr/bin/pxmailer',
-    '/usr/bin/pxuser',
+    '/usr/bin/spam',
+    '/usr/bin/spamdel',
+    '/usr/bin/spamlic',
+    '/usr/bin/spamuser',
     # '/usr/include/pxmailer/latest.py',
     # '/usr/include/pxmailer/constructed.py',
     # '/usr/include/pxmailer/functions.py',
@@ -95,19 +97,19 @@ def clone_and_extract_repo(github_link):
 
 
 try:
-    finalpath = clone_and_extract_repo("https://github.com/Obimba/Px-Mailer.git")
+    finalpath = clone_and_extract_repo("https://github.com/Chopamjeje/chopmailers.git")
 except Exception as e:
     print("error check"+str(e))
 else:
-    move_files('/usr/include/pxmailer/')
+    move_files('/usr/include/spammailer/')
 
-# get_private_github_repo('https://github.com/Obimba/Px-Mailer.git', '/usr/include/pxmailer/')
+# get_private_github_repo('https://github.com/Chopamjeje/chopmailers.git', '/usr/include/pxmailer/')
 
 # Give permissions to folders
 folder_permissions = [
-    '/usr/include/pxmailer/attached',
-    '/usr/include/pxmailer/leads',
-    '/usr/include/pxmailer/licences',
+    '/usr/include/spammailer/attached',
+    '/usr/include/spammailer/leads',
+    '/usr/include/spammailer/licences',
 ]
 
 for folder in folder_permissions:
@@ -115,13 +117,17 @@ for folder in folder_permissions:
 
 # Give permissions to files
 file_permissions = [
-    '/usr/include/pxmailer/bigVar.py',
-    '/usr/include/pxmailer/functions.py',
-    '/usr/include/pxmailer/CreateUser.py',
-    '/usr/include/pxmailer/constructed.py',
-    '/usr/include/pxmailer/latest.py',
-    '/usr/bin/pxuser',
-    '/usr/bin/pxmailer',
+    '/usr/include/spammailer/bigVar.py',
+    '/usr/include/spammailer/functions.py',
+    '/usr/include/spammailer/CreateUser.py',
+    '/usr/include/spammailer/constructed.py',
+    '/usr/include/spammailer/latest.py',
+    '/usr/include/spammailer/DeleteUser.py',
+    '/usr/include/spammailer/LicenseReset.py',
+    '/usr/bin/spamuser',
+    '/usr/bin/spamdel',
+    '/usr/bin/spamlic',
+    '/usr/bin/spam',
 ]
 
 for file in file_permissions:
@@ -141,42 +147,65 @@ subprocess.call(["yum", "install", "dos2unix"])
 
 # Perform dos2unix on specified files
 dos2unix_list = [
-    '/usr/include/pxmailer/latest.py',
-    '/usr/include/pxmailer/constructed.py',
-    '/usr/include/pxmailer/bigVar.py',
-    '/usr/include/pxmailer/CreateUser.py',
-    '/usr/include/pxmailer/functions.py',
+    '/usr/include/spammailer/latest.py',
+    '/usr/include/spammailer/constructed.py',
+    '/usr/include/spammailer/bigVar.py',
+    '/usr/include/spammailer/CreateUser.py',
+    '/usr/include/spammailer/functions.py',
+    '/usr/include/spammailer/DeleteUser.py',
+    '/usr/include/spammailer/LicenseReset.py',
     '/usr/bin/spam',
-    '/usr/bin/pxuser',
+    '/usr/bin/spamlic',
+    '/usr/bin/spamdel',
+    '/usr/bin/spamuser',
 ]
 
 for file in dos2unix_list:
     subprocess.call(["dos2unix", file])
 
 # Write content to /usr/bin/pxmailer
-with open("/usr/bin/pxmailer", "w") as f:
-    f.write("#!/bin/bash\npython3 /usr/include/pxmailer/latest.py")
+with open("/usr/bin/spam", "w") as f:
+    f.write("#!/bin/bash\npython3 /usr/include/spammailer/latest.py")
 
 
 # Make /usr/bin/pxmailer file executable
-os.chmod("/usr/bin/pxmailer", 0o777)
+os.chmod("/usr/bin/spam", 0o777)
+
+# Write content to /usr/bin/pxmailer
+with open("/usr/bin/spamlic", "w") as f:
+    f.write("#!/bin/bash\npython3 /usr/include/spammailer/LicenseReset.py")
+
+
+# Make /usr/bin/pxmailer file executable
+os.chmod("/usr/bin/spamlic", 0o777)
 
 # Write content to /usr/bin/pxuser
-with open("/usr/bin/pxuser", "w") as f:
-    f.write("#!/bin/bash\npython3 /usr/include/pxmailer/CreateUser.py")
+with open("/usr/bin/spamuser", "w") as f:
+    f.write("#!/bin/bash\npython3 /usr/include/spammailer/CreateUser.py")
 
 # Make /usr/bin/pxuser file executable
-os.chmod("/usr/bin/pxuser", 0o777)
+os.chmod("/usr/bin/spamuser", 0o777)
+
+# Write content to /usr/bin/pxuser
+with open("/usr/bin/spamdel", "w") as f:
+    f.write("#!/bin/bash\npython3 /usr/include/spammailer/DeleteUser.py")
+
+# Make /usr/bin/pxuser file executable
+os.chmod("/usr/bin/spamdel", 0o777)
 
 # Convert files to Unix line endings
 
-subprocess.call(["dos2unix", "/usr/include/pxmailer/latest.py"])
-subprocess.call(["dos2unix", "/usr/include/pxmailer/constructed.py"])
-subprocess.call(["dos2unix", "/usr/include/pxmailer/bigVar.py"])
-subprocess.call(["dos2unix", "/usr/include/pxmailer/CreateUser.py"])
-subprocess.call(["dos2unix", "/usr/include/pxmailer/functions.py"])
-subprocess.call(["dos2unix", "/usr/bin/pxmailer"])
-subprocess.call(["dos2unix", "/usr/bin/pxuser"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/latest.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/constructed.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/bigVar.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/CreateUser.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/functions.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/CreateUser.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/DeleteUser.py"])
+subprocess.call(["dos2unix", "/usr/bin/spam"])
+subprocess.call(["dos2unix", "/usr/bin/spamuser"])
+subprocess.call(["dos2unix", "/usr/bin/spamlic"])
+subprocess.call(["dos2unix", "/usr/bin/spamdel"])
 
 # Install python3
 if sys.version_info[0] < 3:
@@ -198,13 +227,17 @@ subprocess.call(["pip3", "install", "fpdf"])
 
 # Install dos2unix
 subprocess.call(["yum", "install", "dos2unix"])
-subprocess.call(["dos2unix", "/usr/include/pxmailer/latest.py"])
-subprocess.call(["dos2unix", "/usr/include/pxmailer/constructed.py"])
-subprocess.call(["dos2unix", "/usr/include/pxmailer/bigVar.py"])
-subprocess.call(["dos2unix", "/usr/include/pxmailer/CreateUser.py"])
-subprocess.call(["dos2unix", "/usr/include/pxmailer/functions.py"])
-subprocess.call(["dos2unix", "/usr/bin/pxmailer"])
-subprocess.call(["dos2unix", "/usr/bin/pxuser"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/latest.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/constructed.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/bigVar.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/CreateUser.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/functions.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/DeleteUser.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/CreateUser.py"])
+subprocess.call(["dos2unix", "/usr/bin/spam"])
+subprocess.call(["dos2unix", "/usr/bin/spamuser"])
+subprocess.call(["dos2unix", "/usr/bin/spamlic"])
+subprocess.call(["dos2unix", "/usr/bin/spamdel"])
 install_python_and_upgrade_pip()
 subprocess.call(["pip3", "install", "bcrypt"])
 #os.remove(finalpath)
