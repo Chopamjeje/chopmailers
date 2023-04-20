@@ -167,6 +167,7 @@ def mailer(x, y, z):
         '{fullemail}': f'{fullemail}',
         '{fullemail.lower()}': f'{fullemail.lower()}',
         '{corp}': f'{corp}',
+        '{mex}': f'{mex}',
         '{submessage}': f'{submessage}',
         '{firstname}': f'{firstname}',
         '{lastname}': f'{lastname}',
