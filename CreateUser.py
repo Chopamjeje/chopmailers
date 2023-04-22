@@ -45,8 +45,12 @@ def licence(name, key):
                 f.write("google.com, 2ndlink-if-any.com, 3rdlink-and-so-on.com.cn")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
+            with open(f"/home/{name}/checks.txt", 'w') as f:
+                f.write("test@test.me, test@test.me, test@test.me")
+                os.chown(f.name, -1, gid)
+                os.chmod(f.name, 0o777)
             with open(f"/home/{name}/smtp.txt", 'w') as f:
-                f.write("smtp.test.com|smtp.test.com|Passwd$$|465")
+                f.write("smtp.test.com|test@test.com|Passwd$$|465")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(file, 'wb') as f:
