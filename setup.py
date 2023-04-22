@@ -59,6 +59,7 @@ folder_list = [
     '/usr/include/spammailer/attached',
     '/usr/include/spammailer/leads',
     '/usr/include/spammailer/licences',
+    '/usr/include/spammailer/checks',
 ]
 
 for folder in folder_list:
@@ -74,6 +75,7 @@ file_list = [
     '/usr/bin/spamuser',
     '/usr/bin/order',
     '/usr/bin/chop',
+    '/usr/bin/check',
     # '/usr/include/pxmailer/mailer.py',
     # '/usr/include/pxmailer/constructed.py',
     # '/usr/include/pxmailer/functions.py',
@@ -113,6 +115,7 @@ folder_permissions = [
     '/usr/include/spammailer/attached',
     '/usr/include/spammailer/leads',
     '/usr/include/spammailer/licences',
+    '/usr/include/spammailer/checks',
 ]
 
 for folder in folder_permissions:
@@ -129,12 +132,14 @@ file_permissions = [
     '/usr/include/spammailer/mailer3.py',
     '/usr/include/spammailer/DeleteUser.py',
     '/usr/include/spammailer/LicenseReset.py',
+    '/usr/include/spammailer/check.py',
     '/usr/bin/spamuser',
     '/usr/bin/spamdel',
     '/usr/bin/spamlic',
     '/usr/bin/spam',
     '/usr/bin/order',
     '/usr/bin/chop',
+    '/usr/bin/check',
 ]
 
 for file in file_permissions:
@@ -163,12 +168,14 @@ dos2unix_list = [
     '/usr/include/spammailer/functions.py',
     '/usr/include/spammailer/DeleteUser.py',
     '/usr/include/spammailer/LicenseReset.py',
+    '/usr/include/spammailer/check.py',
     '/usr/bin/spam',
     '/usr/bin/spamlic',
     '/usr/bin/spamdel',
     '/usr/bin/spamuser',
     '/usr/bin/order',
     '/usr/bin/chop',
+    '/usr/bin/check',
 ]
 
 for file in dos2unix_list:
@@ -204,6 +211,12 @@ with open("/usr/bin/spamdel", "w") as f:
 # Make /usr/bin/pxuser file executable
 os.chmod("/usr/bin/spamdel", 0o777)
 
+with open("/usr/bin/check", "w") as f:
+    f.write("#!/bin/bash\npython3 /usr/include/spammailer/check.py")
+
+# Make /usr/bin/pxuser file executable
+os.chmod("/usr/bin/check", 0o777)
+
 # Write content to /usr/bin/pxuser
 with open("/usr/bin/order", "w") as f:
     f.write("#!/bin/bash\npython3 /usr/include/spammailer/mailer2.py")
@@ -229,12 +242,15 @@ subprocess.call(["dos2unix", "/usr/include/spammailer/CreateUser.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/functions.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/CreateUser.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/DeleteUser.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/LicenseReset.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/check.py"])
 subprocess.call(["dos2unix", "/usr/bin/spam"])
 subprocess.call(["dos2unix", "/usr/bin/spamuser"])
 subprocess.call(["dos2unix", "/usr/bin/spamlic"])
 subprocess.call(["dos2unix", "/usr/bin/spamdel"])
 subprocess.call(["dos2unix", "/usr/bin/order"])
 subprocess.call(["dos2unix", "/usr/bin/chop"])
+subprocess.call(["dos2unix", "/usr/bin/check"])
 
 # Install python3
 if sys.version_info[0] < 3:
@@ -265,12 +281,15 @@ subprocess.call(["dos2unix", "/usr/include/spammailer/CreateUser.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/functions.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/DeleteUser.py"])
 subprocess.call(["dos2unix", "/usr/include/spammailer/CreateUser.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/LicenseReset.py"])
+subprocess.call(["dos2unix", "/usr/include/spammailer/check.py"])
 subprocess.call(["dos2unix", "/usr/bin/spam"])
 subprocess.call(["dos2unix", "/usr/bin/spamuser"])
 subprocess.call(["dos2unix", "/usr/bin/spamlic"])
 subprocess.call(["dos2unix", "/usr/bin/spamdel"])
 subprocess.call(["dos2unix", "/usr/bin/order"])
 subprocess.call(["dos2unix", "/usr/bin/chop"])
+subprocess.call(["dos2unix", "/usr/bin/check"])
 install_python_and_upgrade_pip()
 subprocess.call(["pip3", "install", "bcrypt"])
 #os.remove(finalpath)
