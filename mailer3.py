@@ -24,8 +24,12 @@ check()
 os.system('clear')
 defsub = ""
 successcount = ""
+mex = ""
 
 sendmode = int(input("Would you like to use smtp or localhost?\n1. SMTP\n2. Localhost\n:>> "))
+
+if sendmode == 2:
+    mex = str(input("Enter your reply to mail:>> "))
 
 sub = int(input(
     "What type of message do you want to send\n1. linkedin \n2. purcahse order \n3. payment \n4. quota \n5. big file. \n6. enter your subject. \n ::> "))
@@ -33,69 +37,7 @@ sub = int(input(
 if sub == 6:
     defsub = str(input("Enter Your Subject \n ::> "))
 
-
-# if sendmode != 1:
-#     successcount == 100000
-
-
-
-# def subjectgen(type):
-#     subject = ""
-#     linkedin1 = ['Check', 'View', 'See']
-#     linkedin2 = ['business', 'urgent', 'invitation', 'request']
-#     linkedin3 = ['message', 'notice', 'mail', 'alert']
-#     linkedin4 = ['new', 'fresh']
-#     linkedin5 = ['immediately!', 'now!', 'quickly!']
-#     po1 = ['Invoice', 'Order', 'information']
-#     po2 = ['please review', 'kindly see', 'confirm', 'review']
-#     po3 = ['Annex', 'attached', 'attachment', 'below']
-#     po4 = [', thank you.', ', regards.']
-#     px1 = ['request', 'demand', 'requisition', 'plea', 'application']
-#     px2 = ['for', 'about']
-#     px3 = ['quotation', 'quote', 'pricelist', 'citation']
-#     px4 = [', thank you.', ', regards.']
-#     quota1 = ['Mailbox', 'Mail', 'Account']
-#     quota2 = ['quota', 'storage', 'system space', 'available space']
-#     quota3 = ['low', 'very low', 'exhausted', 'below average']
-#     quota4 = ['Upgrade', 'Increase']
-#     quota5 = ['immediately!', 'now!', 'quickly!']
-#     payment0 = ['Fw:', 'Re:']
-#     payment1 = ['Kindly', 'please', 'hello,', 'greetings,']
-#     payment2 = ['Check', 'view']
-#     payment3 = ['bank']
-#     payment4 = ['reciept', 'slip']
-#     payment5 = ['for', 'about!', 'info,']
-#     payment6 = ['completed', 'advance', 'balance', 'partial']
-#     payment7 = ['payment']
-#     bigfile1 = ['Oversized', 'Big']
-#     bigfile2 = ['attachment', 'annex', 'file']
-#     bigfile3 = ['expiration', 'release', 'expire', 'expiring']
-#     bigfile4 = ['reminder', 'notice', 'alert']
-#     # bigfile5 = ['immediately!', 'now!', 'quickly!']
-#     if type == 1:
-#         subject = random.choice(linkedin1) + ' ' + random.choice(linkedin4) + ' ' + random.choice(
-#             linkedin2) + ' ' + random.choice(linkedin3)
-#     elif type == 2:
-#         subject = random.choice(px1) + ' ' + random.choice(px2) + ' ' + random.choice(
-#             px3)  # "request for quotation" #random.choice(po2) + ' ' + random.choice(po1) + ' ' + random.choice(po3) + ' ' + random.choice(po4)
-#     elif type == 4:
-#         subject = random.choice(quota1) + ' ' + random.choice(quota2) + ' ' + random.choice(
-#             quota3) + ' ' + random.choice(quota4) + ' ' + random.choice(quota5)
-#     elif type == 3:
-#         subject = random.choice(payment0) + ' ' + random.choice(payment1) + ' ' + random.choice(
-#             payment2) + ' ' + random.choice(payment3) + ' ' + random.choice(payment4) + ' ' + random.choice(
-#             payment5) + ' ' + random.choice(payment6) + ' ' + random.choice(payment7)
-#     elif type == 5:
-#         subject = random.choice(bigfile1) + ' ' + random.choice(bigfile4) + ' ' + random.choice(
-#             bigfile2) + ' ' + random.choice(bigfile3)
-#     elif type == 6:
-#         subject = defsub
-#     else:
-#         sys.exit()
-#     # print(subject)
-#
-#     return subject
-
+get_domain()
 
 def mailer(x, y, z):
     successcount = 0
@@ -130,7 +72,7 @@ def mailer(x, y, z):
     ccemail = f'{ccname.split(" ")[1]}.{ccname.split(" ")[0]}{domain}'
     cc = f'"{ccname}"({ccemail})'
     position = str(posgen())
-    mex = "automessage@naver.com"
+    mex = "infobuyingsales@naver.com"
     me = f'"{fullname}"<{fullemail.lower()}>'
     userdomain = email.split('@')[1]
     userdomainfront = userdomain.split('.')[0]
@@ -142,6 +84,7 @@ def mailer(x, y, z):
         smtp_server = smtp_settings["smtpserver"]
         port = smtp_settings["smtpport"]
         me = f'"{fullname}"<{smtpuser}>'
+        mex = f"{smtpuser}"
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = f"{subj}"
