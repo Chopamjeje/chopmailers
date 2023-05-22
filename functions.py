@@ -397,3 +397,10 @@ def read_smtp_file():
                 else:
                     print(f"Warning: Invalid line with {count_pipe} values: {line}")
     return smtp_list
+
+def get_domain():
+    file_path = f"{str(Path.home())}/domains.txt"
+    with open(file_path, "r", encoding="utf-8") as f:
+        for line in f:
+            domainlist.append(line.strip())
+            
