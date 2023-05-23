@@ -37,20 +37,24 @@ def licence(name, key):
                 f.write("<p> Hello Word </p>")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
-            with open(f"/home/{name}/domains.txt", 'w') as f:
-                f.write("<p> giwindustries.com </p>")
-                os.chown(f.name, -1, gid)
-                os.chmod(f.name, 0o777)				
             with open(f"/home/{name}/leads.txt", 'w') as f:
                 f.write("example-email@163.com, Name, Company Name\nexample2@gmail.com, Name Example, 2nd Company Name")
+                os.chown(f.name, -1, gid)
+                os.chmod(f.name, 0o777)
+            with open(f"/home/{name}/domains.txt", 'w') as f:
+                f.write("<p> giwindustries.com </p>")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(f"/home/{name}/links.txt", 'w') as f:
                 f.write("google.com, 2ndlink-if-any.com, 3rdlink-and-so-on.com.cn")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
+            with open(f"/home/{name}/checks.txt", 'w') as f:
+                f.write("test@test.me")
+                os.chown(f.name, -1, gid)
+                os.chmod(f.name, 0o777)
             with open(f"/home/{name}/smtp.txt", 'w') as f:
-                f.write("smtp.test.com|smtp.test.com|Passwd$$|465")
+                f.write("smtp.test.com|test@test.com|Passwd$$|465")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(file, 'wb') as f:
