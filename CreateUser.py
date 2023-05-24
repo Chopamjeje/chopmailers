@@ -42,7 +42,7 @@ def licence(name, key):
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(f"/home/{name}/domains.txt", 'w') as f:
-                f.write("<p> giwindustries.com </p>")
+                f.write("giwindustries.com")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(f"/home/{name}/links.txt", 'w') as f:
