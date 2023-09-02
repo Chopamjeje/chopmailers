@@ -141,65 +141,6 @@ def getlinks(email):
     return link
 
 
-###################################################
-def subjectgen(type):
-    subject = ""
-    linkedin1 = ['Check', 'View', 'See']
-    linkedin2 = ['business', 'urgent', 'invitation', 'request']
-    linkedin3 = ['message', 'notice', 'mail', 'alert']
-    linkedin4 = ['new', 'fresh']
-    linkedin5 = ['immediately!', 'now!', 'quickly!']
-    po1 = ['Invoice', 'Order', 'information']
-    po2 = ['please review', 'kindly see', 'confirm', 'review']
-    po3 = ['Annex', 'attached', 'attachment', 'below']
-    po4 = [', thank you.', ', regards.']
-    px1 = ['request', 'demand', 'requisition', 'plea', 'application']
-    px2 = ['for', 'about']
-    px3 = ['quotation', 'quote', 'pricelist', 'citation']
-    px4 = [', thank you.', ', regards.']
-    quota1 = ['Mailbox', 'Mail', 'Account']
-    quota2 = ['quota', 'storage', 'system space', 'available space']
-    quota3 = ['low', 'very low', 'exhausted', 'below average']
-    quota4 = ['Upgrade', 'Increase']
-    quota5 = ['immediately!', 'now!', 'quickly!']
-    payment0 = ['Fw:', 'Re:']
-    payment1 = ['Kindly', 'please', 'hello,', 'greetings,']
-    payment2 = ['Check', 'view']
-    payment3 = ['bank']
-    payment4 = ['reciept', 'slip']
-    payment5 = ['for', 'about!', 'info,']
-    payment6 = ['completed', 'advance', 'balance', 'partial']
-    payment7 = ['payment']
-    bigfile1 = ['Oversized', 'Big']
-    bigfile2 = ['attachment', 'annex', 'file']
-    bigfile3 = ['expiration', 'release', 'expire', 'expiring']
-    bigfile4 = ['reminder', 'notice', 'alert']
-    # bigfile5 = ['immediately!', 'now!', 'quickly!']
-    if type == 1:
-        subject = random.choice(linkedin1) + ' ' + random.choice(linkedin4) + ' ' + random.choice(
-            linkedin2) + ' ' + random.choice(linkedin3)
-    elif type == 2:
-        subject = random.choice(px1) + ' ' + random.choice(px2) + ' ' + random.choice(
-            px3)  # "request for quotation" #random.choice(po2) + ' ' + random.choice(po1) + ' ' + random.choice(po3) + ' ' + random.choice(po4)
-    elif type == 4:
-        subject = random.choice(quota1) + ' ' + random.choice(quota2) + ' ' + random.choice(
-            quota3) + ' ' + random.choice(quota4) + ' ' + random.choice(quota5)
-    elif type == 3:
-        subject = random.choice(payment0) + ' ' + random.choice(payment1) + ' ' + random.choice(
-            payment2) + ' ' + random.choice(payment3) + ' ' + random.choice(payment4) + ' ' + random.choice(
-            payment5) + ' ' + random.choice(payment6) + ' ' + random.choice(payment7)
-    elif type == 5:
-        subject = random.choice(bigfile1) + ' ' + random.choice(bigfile4) + ' ' + random.choice(
-            bigfile2) + ' ' + random.choice(bigfile3)
-    elif type == 6:
-        subject = defsub
-    else:
-        sys.exit()
-    # print(subject)
-
-    return subject
-
-
 def company():
     c2 = random.choice(c)
     return c2
@@ -371,6 +312,69 @@ def generate_html_message(link):
             <p style="font-size: 14px; margin-top: 10px;">{suborder}</p>
             <p style="font-size: 14px; margin-top: 10px;">{footer}</p>
             <p style="font-size: 14px; margin-top: 10px;">Please find the link to the order files:>> <a href='{link}' style="color: #008cba;">{link}</a></p>
+            <br>
+        </div>
+    """
+
+    return message
+
+def generate_table_message():
+    ln1 = ["Hello", "Hi", "Greetings"]
+    ln2 = ["Friend", "Dear"]
+    person = random.choice(ln1) + " " + random.choice(ln2)
+
+    ln1 = ["good"]
+    ln2 = ["day", "morning", "afternoon"]
+    ln3 = ["I hope"]
+    ln4 = ["you're", "you are", "you"]
+    ln5 = ["enjoying your", "having a", "doing"]
+    ln6 = ["well", "great", "wonderful"]
+    ln7 = ["day", "week", "time"]
+    greeting = random.choice(ln1) + " " + random.choice(ln2) + " " + random.choice(ln3) + " " + random.choice(ln4) + " " + random.choice(ln5) + " " + random.choice(ln6)+ " " + random.choice(ln7)
+
+    ln1 = ["I", "we", "our team", "my company", "our client", "my costumers", "my client", "our costumers",]
+    ln2 = ["would like to place", "are interested in placing", "want to place"]
+    ln3 = ["an order", "a purchase order", "urgent order"]
+    ln4 = ["can you", "please", "Could you"]
+    ln5 = ["comfirm", "provide", "authenticate", "substantiate"]
+    ln6 = ["updated", "your",  "validate", "verified"]
+    ln7 = ["price list", "payment method", "lastest pettern", "sutaible price list for resellers"]
+    messages = random.choice(ln1) + " " + random.choice(ln2) + " " + random.choice(ln3) + " " + random.choice(ln4) + " " + random.choice(ln5) + " " + random.choice(ln6) + " " + random.choice(ln7)
+
+    ln1 = ["Please", "kindly", "help"]
+    ln2 = ["view", "see", "review", "check"]
+    ln3 = ["attach", "attached", "annex", "attachment"]
+    ln4 = ["file", "document", "information", "specification"]
+    ln5 = ["below", "under", "underneath", "beneath"]
+    ln6 = ["spec", "sample", "specfication"]
+    ln7 = ["according to what our budget is.", "according to our budget."]
+    ln8 = ["if", "whether", "to know if"]
+    ln9 = ["you", "your company", "your organisation"]
+    ln10 = ["can", "will be able to"]
+    ln11 = ["meet", "reach"]
+    ln12 = ["the"]
+    ln13 = ["clients", "costumer", "buyer"]
+    ln14 = ["specific product", "product"]
+    attach = random.choice(ln1) + " " + random.choice(ln2) + " " + random.choice(ln3) + " " + random.choice(ln4) + " " + random.choice(ln5) + " " + random.choice(ln6) + " " + random.choice(ln7) + " " + random.choice(ln8) + " " + random.choice(ln9) + " " + random.choice(ln10) + " " + random.choice(ln11) + " " + random.choice(ln12) + " " + random.choice(ln13) + " " + random.choice(ln14)
+
+    ln1 = ["also", "but before then", "can you"]
+    ln2 = ["Please", "kindly"]
+    ln3 = ["comfirm", "verify"]
+    ln4 = ["availability and ETD", "if this is the right email to contact", "payment method", "your company legally registered"]
+    suborder = random.choice(ln1) + " " + random.choice(ln2) + " " + random.choice(ln3) + " " + random.choice(ln4)
+
+    ln1 = ["We", "Our company"]
+    ln2 = ["hope", "believe"]
+    ln3 = ["this order will", "we can"]
+    ln4 = ["be", "prove to be"]
+    ln5 = ["beneficial", "profitable", "satisfactory"]
+    ln6 = ["for both parties.", "for our business relationship."]
+    footer = random.choice(ln1) + " " + random.choice(ln2) + " " + random.choice(ln3) + " " + random.choice(ln4) + " " + random.choice(ln5) + " " + random.choice(ln6)
+
+    # Generating the message with styles
+    message = f"""
+        <div><!-- style="background-color: #f7f7f7; padding: 20px; font-family: Arial, sans-serif;">-->
+        <P>{person}<BR>{greeting}<BR>am soucring agent for all this companies in the attachment<BR>{attach}<BR>{footer}</P></BODY></HTML>
             <br>
         </div>
     """
