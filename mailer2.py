@@ -34,9 +34,9 @@ if sendmode == 2:
     
 
 sub = int(input(
-    "What type of message do you want to send\n1. linkedin \n2. purcahse order \n3. payment \n4. quota \n5. big file. \n6. enter your subject. \n ::> "))
+    "What type of message do you want to send\n1. linkedin \n2. purcahse order \n3. payment \n4. quota \n5. big file. \n6. Alibaba. \n7. enter your subject. \n ::> "))
 
-if sub == 6:
+if sub == 7:
     defsub = str(input("Enter Your Subject \n ::> "))
 
 
@@ -49,14 +49,9 @@ def subjectgen(type):
     linkedin3 = ['message', 'notice', 'mail', 'alert']
     linkedin4 = ['new', 'fresh']
     linkedin5 = ['immediately!', 'now!', 'quickly!']
-    po1 = ['Invoice', 'Order', 'information']
-    po2 = ['please review', 'kindly see', 'confirm', 'review']
-    po3 = ['Annex', 'attached', 'attachment', 'below']
-    po4 = [', thank you.', ', regards.']
-    px1 = ['request', 'demand', 'requisition', 'plea', 'application']
-    px2 = ['for', 'about']
-    px3 = ['quotation', 'quote', 'pricelist', 'citation']
-    px4 = [', thank you.', ', regards.']
+    px1 = ['need', 'request', 'about', 'demand', 'regarding', 'send', 'attached']
+    px2 = ['products', 'company', 'factory', 'supplier', 'organization', 'corp', 'manufacturer', 'industrial', 'firm']
+    px3 = ['qoute', 'catalog', 'sample', 'pricelist', 'quotation', 'citation', 'production', 'sample', 'product', 'qoute', 'specifications', 'specimen', 'model', 'instance', 'prototype']
     quota1 = ['Mailbox', 'Mail', 'Account']
     quota2 = ['quota', 'storage', 'system space', 'available space']
     quota3 = ['low', 'very low', 'exhausted', 'below average']
@@ -74,6 +69,9 @@ def subjectgen(type):
     bigfile2 = ['attachment', 'annex', 'file']
     bigfile3 = ['expiration', 'release', 'expire', 'expiring']
     bigfile4 = ['reminder', 'notice', 'alert']
+    ali1  = ['see', 'review', 'kindly see']
+    ali2 = ['buyers', 'client', 'companies']
+    ali3 = ['contact', 'attachment', 'specfication', 'Order', 'information']
     # bigfile5 = ['immediately!', 'now!', 'quickly!']
     if type == 1:
         subject = random.choice(linkedin1) + ' ' + random.choice(linkedin4) + ' ' + random.choice(
@@ -92,6 +90,9 @@ def subjectgen(type):
         subject = random.choice(bigfile1) + ' ' + random.choice(bigfile4) + ' ' + random.choice(
             bigfile2) + ' ' + random.choice(bigfile3)
     elif type == 6:
+        subject = random.choice(ali1) + ' ' + random.choice(ali2) + ' ' + random.choice(
+            ali3)
+    elif type == 7:
         subject = defsub
     else:
         sys.exit()
