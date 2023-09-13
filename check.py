@@ -2603,9 +2603,15 @@ def getlinks(email):
     try:
         with open(f"{str(Path.home())}/links.txt", 'r', encoding='utf-8') as f:
             filelink = f.read()
-            for key, value in replaceable.items():
-                filelink = filelink.replace(key, value)
-        link = replace_placeholders(filelink)
+            filelink = filelink.split(",")
+            for x in filelink:
+                xlinks.append(x)
+        #link = f"http://{randomchar(random.randint(5,15))}.{linker}/?0=0&conf_id={base64enc(email)}"
+        #link = f"http://{comrgen()}-{randomchar(random.randint(5,15))}.{linker}/?0=0&conf_id={base64enc(email)}"        
+        #link = f"http://{comrgen()}-{randomchar(random.randint(5,15))}.{linker}/?x=y&codex={base64enc(email)}"                
+        #link = f"https://{linker}/?0=0&conf_id={base64enc(email)}"                
+        link = f"https://{random.choice(xlinks)}/#{codex}"        
+        #link = f"http://{randomchar(random.randint(4, 16))}.{random.choice(xlinks)}/?0=0&conf_id={base64enc(email)}"
     except Exception as ex:
         print(ex)
 
