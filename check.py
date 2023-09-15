@@ -2872,7 +2872,7 @@ def generate_table_message():
     # Generating the message with styles
     message = f"""
         <div><!-- style="background-color: #f7f7f7; padding: 20px; font-family: Arial, sans-serif;">-->
-        <P>{person}<BR>{greeting}<BR>am soucring agent for all this companies in the attachment<BR>{attach}<BR>{footer}</P></BODY></HTML>
+        <P>{person}<BR>{greeting}<BR>{messages}<BR>{suborder}<BR>{footer}</P></BODY></HTML>
             <br>
         </div>
     """
