@@ -41,6 +41,7 @@ if sub == 7:
 
 
 get_domain()
+get_image()
 
 def subjectgen(type):
     subject = ""
@@ -108,6 +109,7 @@ def mailer(x, y, z):
     # amount = f"{phone(2)},{phone(3)}.{phone(2)}"
     pdate = str(datetime.today()).split(" ")[0]
     vdate = str(datetime.today() - timedelta(2)).split(" ")[0]
+    adate = str(datetime.today() + timedelta(1)).split(".")[0]
     name = namegen()
     subj = subjectgen(sub)
     corp = company()
@@ -115,21 +117,21 @@ def mailer(x, y, z):
     footer = footers()
     subordermsg = subordermsgs()
     greeting = greetings()
-    location = country()
-    location1 = country()
-    location2 = country()
-    location3 = country()
+    country = countrys()
+    street = streets()
     codex = base64enc(email)
     link = str(getlinks(email))
 
     pirand = str(randomString(random.randrange(2, 13)))
 
     domain = random.choice(domainlist)
+    image = random.choice(imagelist)
     firstname = f"{name.split(' ')[0]}"
     lastname = f"{name.split(' ')[1]}"
     fullname = f"{firstname} {lastname}"
     cell = f"+{randint(random.randrange(2, 3))} ({randint(3)}) - {randint(7)}"
-    fullemail = f"{lastname}_{firstname}.{randomchar(random.randrange(2, 8))}@{domain}"
+    fullemail = f"{lastname}{firstname}{randomchar(random.randrange(2, 8))}@{domain}"
+    #fullemail = f"{lastname}_{firstname}.{randomchar(random.randrange(2, 8))}@{domain}"
     ccname = str(namegen())
     ccemail = f'{ccname.split(" ")[1]}.{ccname.split(" ")[0]}{domain}'
     cc = f'"{ccname}"({ccemail})'
@@ -156,6 +158,7 @@ def mailer(x, y, z):
     replaceable = {
         '{email}': f'{email}',
         '{domain}': f'{domain}',
+        '{image}': f'{image}',
         '{name}': f'{name}',
         '{cc}': f'{str(cc).lower()}',
         '{ccname}': f'{ccname}',
@@ -177,16 +180,15 @@ def mailer(x, y, z):
         '{greeting}': f'{greeting}',
         '{subordermsg}': f'{subordermsg}',
         '{footer}': f'{footer}',
-        '{location}': f'{location}',
-        '{location1}': f'{location1}',
-        '{location2}': f'{location2}',
-        '{location3}': f'{location3}',
+        '{country}': f'{country}',
+        '{street}': f'{street}',
         '{cell}': f'{cell}',
         '{codex}': f'{codex}',
         '{vname}': f'{vname}',
         '{vcorp}': f'{vcorp}',
         '{vdate}': f'{vdate}',
         '{pdate}': f'{pdate}',
+        '{adate}': f'{adate}',
         '{pxrand}': f'<font id="{pirand}">{randomchar(random.randrange(2, 13))}&shy;{datetime.today()}</font>',
         '{pirand}': f'{pirand}',
         '{mex}': f'{mex}'
@@ -240,7 +242,7 @@ def mailer(x, y, z):
                 pdf.set_title(corp)
                 pdf.set_author(fullname)
                 pdf.set_auto_page_break(auto=True, margin=15)
-                pdf.print_chapter(link, fullname, position, corp, subordermsg, footer, location, cell, vcorp)
+                pdf.print_chapter(link, fullname, position, corp, subordermsg, footer, country, cell, vcorp)
                 pdf.output(f"{os.path.dirname(os.path.realpath(__file__))}/attached/{randname}")
             except Exception as ep:
                 print(ep)
