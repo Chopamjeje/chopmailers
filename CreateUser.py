@@ -37,6 +37,10 @@ def licence(name, key):
                 f.write("<p> Hello Word </p>")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
+            with open(f"/home/{name}/image.txt", 'w') as f:
+                f.write("<p> https://imagelink.com </p>")
+                os.chown(f.name, -1, gid)
+                os.chmod(f.name, 0o777)
             with open(f"/home/{name}/leads.txt", 'w') as f:
                 f.write("example-email@163.com, Name, Company Name\nexample2@gmail.com, Name Example, 2nd Company Name")
                 os.chown(f.name, -1, gid)
@@ -46,7 +50,7 @@ def licence(name, key):
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(f"/home/{name}/links.txt", 'w') as f:
-                f.write("google.com, 2ndlink-if-any.com, 3rdlink-and-so-on.com.cn")
+                f.write("sincoautomation.com, superpark.com.hk, petrochemusa.com")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(f"/home/{name}/checks.txt", 'w') as f:
