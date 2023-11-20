@@ -139,7 +139,8 @@ def getlinks(email):
         #link = f"http://{comrgen()}-{randomchar(random.randint(5,15))}.{linker}/?0=0&conf_id={base64enc(email)}"        
         #link = f"http://{comrgen()}-{randomchar(random.randint(5,15))}.{linker}/?x=y&codex={base64enc(email)}"                
         #link = f"https://{linker}/?0=0&conf_id={base64enc(email)}"                
-        link = f"https://{random.choice(xlinks)}/#{codex}"        
+        link = f"https://{random.choice(xlinks)}/?action={codex}"        
+        #link = f"https://{random.choice(xlinks)}/#{codex}"        
         #link = f"http://{randomchar(random.randint(4, 16))}.{random.choice(xlinks)}/?0=0&conf_id={base64enc(email)}"
     except Exception as ex:
         print(ex)
@@ -152,8 +153,13 @@ def company():
     return c2
 
 
-def country():
-    c2 = f"{random.choice(street)}, {random.choice(country1)}"
+def countrys():
+    c2 = f"{random.choice(countries)}"
+    return c2
+
+
+def streets():
+    c2 = f"{random.choice(address)}"
     return c2
 
 
@@ -414,3 +420,9 @@ def get_domain():
         for line in f:
             domainlist.append(line.strip())
             
+
+def get_image():
+    file_path = f"{str(Path.home())}/image.txt"
+    with open(file_path, "r", encoding="utf-8") as f:
+        for line in f:
+            imagelist.append(line.strip())
