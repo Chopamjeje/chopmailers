@@ -38,7 +38,7 @@ def licence(name, key):
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(f"/home/{name}/image.txt", 'w') as f:
-                f.write("<p> https://imagelink.com </p>")
+                f.write("https://imagelink.com")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(f"/home/{name}/leads.txt", 'w') as f:
@@ -50,7 +50,7 @@ def licence(name, key):
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(f"/home/{name}/links.txt", 'w') as f:
-                f.write("sincoautomation.com, superpark.com.hk, petrochemusa.com")
+                f.write("sincoautomation.com,superpark.com.hk,petrochemusa.com")
                 os.chown(f.name, -1, gid)
                 os.chmod(f.name, 0o777)
             with open(f"/home/{name}/checks.txt", 'w') as f:
