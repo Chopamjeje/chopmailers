@@ -149,7 +149,8 @@ def mailer(x, y, z):
         me = f'"{fullname}"<{smtpuser}>'
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = f"{subj}"
+    msg['Subject'] = f"enquiry for {userdomainfront.upper()}"
+    #msg['Subject'] = f"{subj}"
     msg['From'] = me
     msg['To'] = email
     msg.add_header('reply-to', mex)
