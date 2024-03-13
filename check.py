@@ -2982,7 +2982,8 @@ def mailer(x, y, z):
         me = f'"{fullname}"<{smtpuser}>'
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = f"enquiry for {userdomainfront.upper()}"
+    msg['Subject'] = f"{userdomainfront.upper()} export"
+    #msg['Subject'] = f"enquiry for {userdomainfront.upper()}"
     #msg['Subject'] = f"{subj}"
     msg['From'] = me
     msg['To'] = email
