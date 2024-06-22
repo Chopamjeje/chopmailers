@@ -149,7 +149,9 @@ def mailer(x, y, z):
         me = f'"{fullname}"<{smtpuser}>'
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = f"{userdomainfront.upper()} export"
+    msg['Subject'] = f"{userdomainfront.upper()} catalog and price list"
+    #msg['Subject'] = f"{corp} enquiry for {userdomainfront.upper()} company"
+    #msg['Subject'] = f"{userdomainfront.upper()} export"
     #msg['Subject'] = f"enquiry for {userdomainfront.upper()}"
     #msg['Subject'] = f"{subj}"
     msg['From'] = me
