@@ -109,7 +109,8 @@ def mailer(x, y, z):
     # amount = f"{phone(2)},{phone(3)}.{phone(2)}"
     pdate = str(datetime.today()).split(" ")[0]
     vdate = str(datetime.today() - timedelta(2)).split(" ")[0]
-    adate = str(datetime.today() + timedelta(1)).split(".")[0]
+    adate = str(datetime.today() + timedelta(3)).split(" ")[0]
+    #adate = str(datetime.today() + timedelta(3)).split(".")[0]
     name = namegen()
     subj = subjectgen(sub)
     corp = company()
