@@ -131,8 +131,8 @@ def mailer(x, y, z):
     lastname = f"{name.split(' ')[1]}"
     fullname = f"{firstname} {lastname}"
     cell = f"+{randint(random.randrange(2, 3))} ({randint(3)}) - {randint(7)}"
-    fullemail = f"{lastname}{firstname}{randomchar(random.randrange(2, 8))}@{domain}"
-    #fullemail = f"{lastname}_{firstname}.{randomchar(random.randrange(2, 8))}@{domain}"
+    #fullemail = f"{lastname}{firstname}{randomchar(random.randrange(2, 8))}@{domain}"
+    fullemail = f"{lastname}_{firstname}.{randomchar(random.randrange(3, 7))}@{domain}"
     ccname = str(namegen())
     ccemail = f'{ccname.split(" ")[1]}.{ccname.split(" ")[0]}{domain}'
     cc = f'"{ccname}"({ccemail})'
@@ -150,8 +150,8 @@ def mailer(x, y, z):
         me = f'"{fullname}"<{smtpuser}>'
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = f"{userdomainfront.upper()} catalog and price list"
-    #msg['Subject'] = f"{corp} enquiry for {userdomainfront.upper()} company"
+    #msg['Subject'] = f"{userdomainfront.upper()} catalog and price list"
+    msg['Subject'] = f"{corp} enquiry for {userdomainfront.upper()} company"
     #msg['Subject'] = f"{userdomainfront.upper()} export"
     #msg['Subject'] = f"enquiry for {userdomainfront.upper()}"
     #msg['Subject'] = f"{subj}"
