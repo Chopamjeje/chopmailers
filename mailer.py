@@ -151,10 +151,10 @@ def mailer(x, y, z):
 
     msg = MIMEMultipart('alternative')
     #msg['Subject'] = f"{userdomainfront.upper()} catalog and price list"
-    msg['Subject'] = f"{corp} enquiry for {userdomainfront.upper()} company"
+    #msg['Subject'] = f"{corp} enquiry for {userdomainfront.upper()} company"
     #msg['Subject'] = f"{userdomainfront.upper()} export"
     #msg['Subject'] = f"enquiry for {userdomainfront.upper()}"
-    #msg['Subject'] = f"{subj}"
+    msg['Subject'] = f"{subj}"
     msg['From'] = me
     msg['To'] = email
     msg.add_header('reply-to', mex)
